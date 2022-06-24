@@ -14,6 +14,9 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MAT_DATE_FORMATS} from "@angular/material/core";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 
 const clientFormRoutes: Routes =[
@@ -22,6 +25,18 @@ const clientFormRoutes: Routes =[
   { path: 'identity', component: IdentityComponent},
   { path: '**', component: NotFoundComponent }
 ];
+
+export const MY_DATE_FORMATS = {
+  parse: {
+    dateInput: 'DD/MM/YYYY',
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MMMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY'
+  },
+};
 
 @NgModule({
   declarations: [
@@ -42,6 +57,11 @@ const clientFormRoutes: Routes =[
     MatDividerModule,
     MatButtonModule,
     MatInputModule,
+    MatDatepickerModule,
+    MatButtonToggleModule,
+  ],
+  providers: [
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }
   ]
 })
 export class ClientCreateFormModule { }

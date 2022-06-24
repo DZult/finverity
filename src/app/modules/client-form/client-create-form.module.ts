@@ -5,6 +5,15 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ClientComponent } from './components/client/client.component';
 import { AddressComponent } from './components/address/address.component';
 import { IdentityComponent } from './components/identity/identity.component';
+import {MatSliderModule} from "@angular/material/slider";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {BrowserModule} from "@angular/platform-browser";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
+import {MatIconModule} from "@angular/material/icon";
+import {MatDividerModule} from "@angular/material/divider";
+import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
 
 
 const clientFormRoutes: Routes =[
@@ -22,8 +31,17 @@ const clientFormRoutes: Routes =[
     IdentityComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
+    BrowserModule,
     CommonModule,
-    RouterModule.forRoot(clientFormRoutes)
+    RouterModule.forRoot(clientFormRoutes),
+    MatSliderModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatIconModule,
+    MatDividerModule,
+    MatButtonModule,
+    MatInputModule,
   ]
 })
 export class ClientCreateFormModule { }

@@ -26,7 +26,6 @@
   &-55 { margin-bottom: 55px; }
   &-60 { margin-bottom: 60px; }
   &-70 { margin-bottom: 70px; }
-  &-130 { margin-bottom: 130px; }
 }
 .ml {
   &-5 { margin-left: 5px; }
@@ -44,7 +43,7 @@
 }
 .mr {
   &-5 { margin-right: 5px; }
-  &-10 { margin-right: 10px; }
+  &-10 { margin-right: 10px !important; }
   &-15 { margin-right: 15px; }
   &-20 { margin-right: 20px; }
   &-25 { margin-right: 25px; }

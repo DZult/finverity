@@ -28,6 +28,8 @@ export class ClientComponent implements OnInit {
   }
 
   public onNextStep = () => {
-    this.router.navigate(['/address']);
+    this.router.navigate(['/address']).catch(err => {
+      alert(err);
+    });
   }
 }

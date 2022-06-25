@@ -19,11 +19,13 @@ import {MAT_DATE_FORMATS} from "@angular/material/core";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { CreatedClientComponent } from './components/created-client/created-client.component';
 
 const clientFormRoutes: Routes =[
   { path: '', component: ClientComponent},
   { path: 'address', component: AddressComponent},
   { path: 'identity', component: IdentityComponent},
+  { path: 'created-client', component: CreatedClientComponent},
   { path: '**', component: NotFoundComponent }
 ];
 
@@ -45,6 +47,7 @@ export const MY_DATE_FORMATS = {
     ClientComponent,
     AddressComponent,
     IdentityComponent,
+    CreatedClientComponent,
   ],
   imports: [
     BrowserAnimationsModule,

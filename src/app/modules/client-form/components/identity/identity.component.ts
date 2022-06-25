@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-identity',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IdentityComponent implements OnInit {
 
-  constructor() { }
+  public documentTypesList: string[] = [
+    'Удостоверение личности',
+    'Свидетельство о рождении',
+    'Вод. удостоверение',
+  ]
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  public onPreviousStep = () => {
+    this.router.navigate(['/address']).catch(err => {
+      alert(err);
+    });
+  }
+
+  public onNextStep = () => {
+    this.router.navigate(['/created-client']).catch(err => {
+      alert(err);
+    });
   }
 
 }

@@ -21,6 +21,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { CreatedClientComponent } from './components/created-client/created-client.component';
 import { FieldsPipe } from './pipes/fields.pipe';
+import { ValuesPipe } from './pipes/values.pipe';
 
 const clientFormRoutes: Routes =[
   { path: '', component: ClientComponent},
@@ -38,6 +39,7 @@ const clientFormRoutes: Routes =[
     IdentityComponent,
     CreatedClientComponent,
     FieldsPipe,
+    ValuesPipe,
   ],
   imports: [
     BrowserAnimationsModule,

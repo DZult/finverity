@@ -15,9 +15,21 @@ export class CreatedClientComponent implements OnInit {
   constructor(private formService: FormService) { }
 
   ngOnInit(): void {
-    this.clientData = this.removeEmptyKeys(this.formService.clientFormData);
-    this.addressData = this.removeEmptyKeys(this.formService.addressFormData);
-    this.identityData = this.removeEmptyKeys(this.formService.identityFormData);
+    // @ts-ignore
+    localStorage.getItem('clientData') ?
+      // @ts-ignore
+      this.clientData = JSON.parse(localStorage.getItem('clientData')) :
+      this.clientData = this.removeEmptyKeys(this.formService.clientFormData)
+
+    localStorage.getItem('addressData') ?
+      // @ts-ignore
+      this.addressData = JSON.parse(localStorage.getItem('addressData')) :
+      this.addressData = this.removeEmptyKeys(this.formService.addressFormData)
+
+    localStorage.getItem('identityData') ?
+      // @ts-ignore
+      this.identityData = JSON.parse(localStorage.getItem('identityData')) :
+      this.identityData = this.removeEmptyKeys(this.formService.identityFormData)
 
     this.collectToFinalData(Object.entries(this.clientData));
     this.collectToFinalData(Object.entries(this.addressData));

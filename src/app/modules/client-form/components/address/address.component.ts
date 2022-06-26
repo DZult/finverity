@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {FormService} from "../../services/form.service";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 interface Country {
   codename: string,
@@ -12,6 +14,15 @@ interface Country {
   styleUrls: ['./address.component.scss']
 })
 export class AddressComponent implements OnInit {
+
+  public addressForm: FormGroup = new FormGroup({
+    'index': new FormControl(),
+    'country': new FormControl('', Validators.required),
+    'region': new FormControl(),
+    'city': new FormControl('', Validators.required),
+    'street': new FormControl(),
+    'house': new FormControl(),
+  })
 
   public countryList: Country[] = [
     {
@@ -34,7 +45,8 @@ export class AddressComponent implements OnInit {
 
   public currentCitiesList: string[] = [];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private formService: FormService) { }
 
   ngOnInit(): void {
   }
@@ -65,6 +77,24 @@ export class AddressComponent implements OnInit {
     this.router.navigate(['/identity']).catch(err => {
       alert(err);
     });
+  }
+
+  public submit = () => {
+    const controls = this.addressForm.controls;
+
+    /** Проверяем форму на валидность */
+    if (this.addressForm.invalid) {
+      /** Если форма не валидна, то помечаем все контролы как touched*/
+      Object.keys(controls)
+        .forEach(controlName => controls[controlName].markAsTouched());
+
+      /** Прерываем выполнение метода*/
+      return;
+    }
+
+    /** TODO: Обработка данных формы */
+    this.formService.saveAddressFormData(this.addressForm.value)
+    this.onNextStep();
   }
 
 }

@@ -1,15 +1,15 @@
 <div class="layout">
-  <div class="form">
+  <form class="form" [formGroup]="addressForm" (ngSubmit)="submit()">
     <div class="row">
       <mat-form-field>
         <mat-label>Индекс</mat-label>
-        <input matInput placeholder="Индекс" value="">
+        <input [formControlName]="'index'" matInput placeholder="Индекс" value="">
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field>
-        <mat-label>Страна*</mat-label>
-        <mat-select (selectionChange)="getCurrentCitiesList($event)">
+        <mat-label>Страна</mat-label>
+        <mat-select [formControlName]="'country'" (selectionChange)="getCurrentCitiesList($event)">
           <mat-option
             *ngFor="let country of countryList"
             [value]="country.codename">
@@ -21,13 +21,13 @@
     <div class="row">
       <mat-form-field>
         <mat-label>Область</mat-label>
-        <input matInput placeholder="Область" value="">
+        <input [formControlName]="'region'" matInput placeholder="Область" value="">
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field>
-        <mat-label>Город*</mat-label>
-        <mat-select>
+        <mat-label>Город</mat-label>
+        <mat-select [formControlName]="'city'">
           <mat-option *ngFor="let city of currentCitiesList" [value]="city">
             {{city}}
           </mat-option>
@@ -37,18 +37,18 @@
     <div class="row">
       <mat-form-field>
         <mat-label>Улица</mat-label>
-        <input matInput placeholder="Улица" value="">
+        <input [formControlName]="'street'" matInput placeholder="Улица" value="">
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field>
         <mat-label>Дом</mat-label>
-        <input matInput placeholder="Дом" value="">
+        <input [formControlName]="'house'" matInput placeholder="Дом" value="">
       </mat-form-field>
     </div>
     <div class="row flex jc-end mt-20">
       <button mat-raised-button color="primary" class="mr-10" (click)="onPreviousStep()">Назад</button>
-      <button mat-raised-button color="primary" (click)="onNextStep()">Далее</button>
+      <button mat-raised-button color="primary" (click)="submit()">Далее</button>
     </div>
-  </div>
+  </form>
 </div>

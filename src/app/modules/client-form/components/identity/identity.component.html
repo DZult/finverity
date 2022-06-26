@@ -1,9 +1,9 @@
 <div class="layout">
-  <div class="form">
+  <form class="form" [formGroup]="identityForm" (ngSubmit)="submit()">
     <div class="row">
       <mat-form-field>
-        <mat-label>Тип документа*</mat-label>
-        <mat-select>
+        <mat-label>Тип документа</mat-label>
+        <mat-select [formControlName]="'document_type'">
           <mat-option *ngFor="let documentType of documentTypesList" [value]="documentType">
             {{documentType}}
           </mat-option>
@@ -13,35 +13,35 @@
     <div class="row">
       <mat-form-field>
         <mat-label>Серия</mat-label>
-        <input matInput placeholder="Серия" value="">
+        <input [formControlName]="'document_series'" matInput placeholder="Серия" value="">
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field>
-        <mat-label>Номер*</mat-label>
-        <input matInput placeholder="Номер" value="">
+        <mat-label>Номер</mat-label>
+        <input [formControlName]="'document_number'" matInput placeholder="Номер" value="">
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field>
         <mat-label>Кем выдан</mat-label>
-        <input matInput placeholder="Кем выдан" value="">
+        <input [formControlName]="'document_issuer'" matInput placeholder="Кем выдан" value="">
       </mat-form-field>
     </div>
     <div class="row">
       <mat-form-field>
-        <mat-label>Дата выдачи*</mat-label>
-        <input matInput [matDatepicker]="picker">
+        <mat-label>Дата выдачи</mat-label>
+        <input [formControlName]="'document_issue_date'" matInput [matDatepicker]="picker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </div>
     <div class="row">
-      <input type="file">
+      <input [formControlName]="'document_file'" type="file">
     </div>
     <div class="row flex jc-end mt-20">
       <button mat-raised-button color="primary" class="mr-10" (click)="onPreviousStep()">Назад</button>
-      <button mat-raised-button color="primary" (click)="onNextStep()">Готово</button>
+      <button mat-raised-button color="primary" (click)="submit()">Готово</button>
     </div>
-  </div>
+  </form>
 </div>

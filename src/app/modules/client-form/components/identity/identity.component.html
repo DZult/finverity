@@ -28,6 +28,14 @@
         <input matInput placeholder="Кем выдан" value="">
       </mat-form-field>
     </div>
+    <div class="row">
+      <mat-form-field>
+        <mat-label>Дата выдачи*</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
     <div class="row flex jc-end mt-20">
       <button mat-raised-button color="primary" class="mr-10" (click)="onPreviousStep()">Назад</button>
       <button mat-raised-button color="primary" (click)="onNextStep()">Готово</button>

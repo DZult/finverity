@@ -15,7 +15,7 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MAT_DATE_FORMATS} from "@angular/material/core";
+import {MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatCheckboxModule} from "@angular/material/checkbox";
@@ -28,18 +28,6 @@ const clientFormRoutes: Routes =[
   { path: 'created-client', component: CreatedClientComponent},
   { path: '**', component: NotFoundComponent }
 ];
-
-export const MY_DATE_FORMATS = {
-  parse: {
-    dateInput: 'DD/MM/YYYY',
-  },
-  display: {
-    dateInput: 'DD/MM/YYYY',
-    monthYearLabel: 'MMMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY'
-  },
-};
 
 @NgModule({
   declarations: [
@@ -61,14 +49,16 @@ export const MY_DATE_FORMATS = {
     MatDividerModule,
     MatButtonModule,
     MatInputModule,
-    MatDatepickerModule,
     MatButtonToggleModule,
     ReactiveFormsModule,
     MatCheckboxModule,
     FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [
-    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }
+    MatNativeDateModule,
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
   ]
 })
 export class ClientCreateFormModule { }

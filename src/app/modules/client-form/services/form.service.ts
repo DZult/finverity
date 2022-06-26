@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 export class FormService {
 
   public clientFormData = {};
+  public addressFormData = {};
+  public identityFormData = {};
 
   constructor() { }
 
@@ -14,11 +16,11 @@ export class FormService {
   }
 
   public saveAddressFormData = (data: {}) => {
-    this.clientFormData = data;
+    this.addressFormData = data;
   }
 
   public saveIdentityFormData = (data: {}) => {
-    this.clientFormData = data;
+    this.identityFormData = data;
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {FormService} from "../../services/form.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-identity',
@@ -26,7 +27,8 @@ export class IdentityComponent implements OnInit {
   ]
 
   constructor(private router: Router,
-              private formService: FormService) { }
+              private formService: FormService,
+              private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.setDataFromLocalStorage()
@@ -59,6 +61,10 @@ export class IdentityComponent implements OnInit {
     });
   }
 
+  public openSnackBar = (message: string, action: string) => {
+    this._snackBar.open(message, action);
+  }
+
   public submit = () => {
     const controls = this.identityForm.controls;
 
@@ -74,8 +80,11 @@ export class IdentityComponent implements OnInit {
 
     /** TODO: Обработка данных формы */
     this.formService.saveIdentityFormData(this.identityForm.value);
-    localStorage.setItem('identityData', JSON.stringify(this.identityForm.value))
-    this.onNextStep();
+    localStorage.setItem('identityData', JSON.stringify(this.identityForm.value));
+    this.openSnackBar('Клиент успешно создан!', 'OK');
+    setTimeout(() => {
+      this.onNextStep();
+    }, 2000);
   }
 
 }

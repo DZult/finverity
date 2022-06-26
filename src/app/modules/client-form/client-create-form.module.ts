@@ -22,6 +22,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import { CreatedClientComponent } from './components/created-client/created-client.component';
 import { FieldsPipe } from './pipes/fields.pipe';
 import { ValuesPipe } from './pipes/values.pipe';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 const clientFormRoutes: Routes =[
   { path: '', component: ClientComponent},
@@ -59,6 +60,7 @@ const clientFormRoutes: Routes =[
     FormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSnackBarModule,
   ],
   providers: [
     MatNativeDateModule,

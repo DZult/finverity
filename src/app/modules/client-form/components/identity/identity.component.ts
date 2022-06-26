@@ -29,6 +29,22 @@ export class IdentityComponent implements OnInit {
               private formService: FormService) { }
 
   ngOnInit(): void {
+    this.setDataFromLocalStorage()
+  }
+
+  public setDataFromLocalStorage = () => {
+    if (localStorage.getItem('identityData')) {
+      // @ts-ignore
+      const data = JSON.parse(localStorage.getItem('identityData'));
+      this.identityForm.setValue({
+        'document_type': data['document_type'],
+        'document_series': data['document_series'],
+        'document_number': data['document_number'],
+        'document_issuer': data['document_issuer'],
+        'document_issue_date': data['document_issue_date'],
+        'document_file': data['document_file'],
+      })
+    }
   }
 
   public onPreviousStep = () => {
@@ -57,7 +73,8 @@ export class IdentityComponent implements OnInit {
     }
 
     /** TODO: Обработка данных формы */
-    this.formService.saveIdentityFormData(this.identityForm.value)
+    this.formService.saveIdentityFormData(this.identityForm.value);
+    localStorage.setItem('identityData', JSON.stringify(this.identityForm.value))
     this.onNextStep();
   }
 

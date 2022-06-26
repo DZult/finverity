@@ -49,6 +49,22 @@ export class AddressComponent implements OnInit {
               private formService: FormService) { }
 
   ngOnInit(): void {
+    this.setDataFromLocalStorage();
+  }
+
+  public setDataFromLocalStorage = () => {
+    if (localStorage.getItem('addressData')) {
+      // @ts-ignore
+      const data = JSON.parse(localStorage.getItem('addressData'));
+      this.addressForm.setValue({
+        'index': data['index'],
+        'country': data['country'],
+        'region': data['region'],
+        'city': data['city'],
+        'street': data['street'],
+        'house': data['house'],
+      })
+    }
   }
 
   public getCurrentCitiesList = (selectedCountry: any) => {
@@ -93,7 +109,8 @@ export class AddressComponent implements OnInit {
     }
 
     /** TODO: Обработка данных формы */
-    this.formService.saveAddressFormData(this.addressForm.value)
+    this.formService.saveAddressFormData(this.addressForm.value);
+    localStorage.setItem('addressData', JSON.stringify(this.addressForm.value))
     this.onNextStep();
   }
 

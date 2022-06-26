@@ -37,6 +37,25 @@ export class ClientComponent implements OnInit {
               private formService: FormService) { }
 
   ngOnInit(): void {
+    this.setDataFromLocalStorage()
+  }
+
+  public setDataFromLocalStorage = () => {
+    if (localStorage.getItem('clientData')) {
+      // @ts-ignore
+      const data = JSON.parse(localStorage.getItem('clientData'));
+      this.clientForm.setValue({
+        'first_name': data['first_name'],
+        'last_name': data['last_name'],
+        'middle_name': data['middle_name'],
+        'birth_date': data['birth_date'],
+        'sex': data['sex'],
+        'phone': data['phone'],
+        'group_of_clients': data['group_of_clients'],
+        'coordinator': data['coordinator'],
+        'is_send_sms': data['is_send_sms'],
+      })
+    }
   }
 
   public onNextStep = () => {
@@ -60,6 +79,7 @@ export class ClientComponent implements OnInit {
 
     /** TODO: Обработка данных формы */
     this.formService.saveClientFormData(this.clientForm.value)
+    localStorage.setItem('clientData', JSON.stringify(this.clientForm.value))
     this.onNextStep();
   }
 

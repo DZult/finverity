@@ -20,6 +20,7 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { CreatedClientComponent } from './components/created-client/created-client.component';
+import { FieldsPipe } from './pipes/fields.pipe';
 
 const clientFormRoutes: Routes =[
   { path: '', component: ClientComponent},
@@ -36,6 +37,7 @@ const clientFormRoutes: Routes =[
     AddressComponent,
     IdentityComponent,
     CreatedClientComponent,
+    FieldsPipe,
   ],
   imports: [
     BrowserAnimationsModule,

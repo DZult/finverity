@@ -15,3 +15,15 @@
 .mat-form-field {
   width: 100%;
 }
+.form-data {
+  display: flex;
+  flex-direction: column;
+  .key {
+    display: inline-block;
+    margin-right: 10px;
+    color: #a2a2a2;
+  }
+  .value {
+    display: inline-block;
+  }
+}

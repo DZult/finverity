@@ -1,1 +1,9 @@
-<p>created-client works!</p>
+<div class="layout">
+  <div class="form-data">
+    <h2>Данные клиента</h2>
+    <div class="row" *ngFor="let item of finalData">
+      <span class="key">{{item[0] | fields}}:</span>
+      <span class="value">{{item[1]}}</span>
+    </div>
+  </div>
+</div>

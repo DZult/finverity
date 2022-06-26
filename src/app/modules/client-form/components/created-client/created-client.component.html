@@ -3,7 +3,9 @@
     <h2>Данные клиента</h2>
     <div class="row" *ngFor="let item of finalData">
       <span class="key">{{item[0] | fields}}:</span>
-      <span class="value">{{item[1] | values}}</span>
+      <span class="value" *ngIf="item[0] !== 'phone' && item[0] !== 'birth_date' &&  item[0] !== 'document_issue_date'">{{item[1] | values}}</span>
+      <span class="value" *ngIf="item[0] === 'phone'">{{formatPhoneNumber(item[1])}}</span>
+      <span class="value" *ngIf="item[0] === 'birth_date' || item[0] === 'document_issue_date'">{{item[1] | date: 'dd/MM/yyyy'}}</span>
     </div>
   </div>
 </div>

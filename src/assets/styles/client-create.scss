@@ -10,10 +10,19 @@
     padding: 20px;
     border-radius: 8px;
     min-width: 300px;
+    .row {
+      margin-bottom: 10px;
+      p {
+        margin-bottom: 0;
+      }
+    }
   }
 }
 .mat-form-field {
   width: 100%;
+}
+.mat-button-toggle-checked {
+  background-color: #ffd740;
 }
 .form-data {
   display: flex;

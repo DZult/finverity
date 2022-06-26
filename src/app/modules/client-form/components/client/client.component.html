@@ -37,7 +37,12 @@
     <div class="row">
       <mat-form-field>
         <mat-label>Номер телефона</mat-label>
-        <input [formControlName]="'phone'" matInput placeholder="Номер телефона" value="">
+        <input [formControlName]="'phone'"
+               [imask]="{mask: '+{7}(000)-000-00-00'}"
+               [unmask]="true"
+               matInput
+               placeholder="Номер телефона"
+               value="">
       </mat-form-field>
     </div>
     <div class="row">

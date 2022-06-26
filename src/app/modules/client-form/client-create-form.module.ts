@@ -23,6 +23,7 @@ import { CreatedClientComponent } from './components/created-client/created-clie
 import { FieldsPipe } from './pipes/fields.pipe';
 import { ValuesPipe } from './pipes/values.pipe';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {IMaskModule} from "angular-imask";
 
 const clientFormRoutes: Routes =[
   { path: '', component: ClientComponent},
@@ -61,6 +62,7 @@ const clientFormRoutes: Routes =[
     MatDatepickerModule,
     MatNativeDateModule,
     MatSnackBarModule,
+    IMaskModule,
   ],
   providers: [
     MatNativeDateModule,

@@ -18,6 +18,10 @@
 .form-data {
   display: flex;
   flex-direction: column;
+  background-color: #fafafa;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 300px;
   .key {
     display: inline-block;
     margin-right: 10px;

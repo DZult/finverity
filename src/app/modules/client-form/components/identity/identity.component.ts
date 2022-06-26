@@ -42,7 +42,7 @@ export class IdentityComponent implements OnInit {
         'document_number': data['document_number'],
         'document_issuer': data['document_issuer'],
         'document_issue_date': data['document_issue_date'],
-        'document_file': data['document_file'],
+        'document_file': '',
       })
     }
   }

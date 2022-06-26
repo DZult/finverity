@@ -56,6 +56,7 @@ export class AddressComponent implements OnInit {
     if (localStorage.getItem('addressData')) {
       // @ts-ignore
       const data = JSON.parse(localStorage.getItem('addressData'));
+      this.getCurrentCitiesList(data['country'], true);
       this.addressForm.setValue({
         'index': data['index'],
         'country': data['country'],
@@ -67,8 +68,8 @@ export class AddressComponent implements OnInit {
     }
   }
 
-  public getCurrentCitiesList = (selectedCountry: any) => {
-    switch (selectedCountry.value) {
+  public getCurrentCitiesList = (selectedCountry: any, isCountryFromLocalStorage: boolean = false) => {
+    switch (isCountryFromLocalStorage ? selectedCountry : selectedCountry.value) {
       case 'UK':
         this.currentCitiesList = this.UKCitiesList;
         break;
